@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const TextInput = styled.TextInput`
   margin-top: 60px;
-  width: 55%;
+  width: 60%;
   padding: 10px;
   border-radius: 6px;
   border: 1px solid gray;

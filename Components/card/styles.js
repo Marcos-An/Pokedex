@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.View`
   background-color: ${(props) => props.background};
-  flex-grow: 1;
-  width: 48%;
   padding: 15px;
   border-radius: 15px;
   margin: 5px;
   min-height: 130px;
   overflow: hidden;
+`;
+export const Touchable = styled.TouchableOpacity`
+  flex-grow: 1;
+  width: 50%;
 `;
 
 export const PokemonName = styled.Text`
@@ -35,6 +37,7 @@ export const Types = styled.View`
 export const TypeContainer = styled.View``;
 export const TypeName = styled.Text`
   background-color: rgba(255, 255, 255, 0.17);
+  text-transform: capitalize;
   width: 47%;
   text-align: center;
   border-radius: 60px;

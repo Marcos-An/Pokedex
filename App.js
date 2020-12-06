@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Routes from "./router";
-import { View } from "react-native";
+import store from "./store";
+import { Provider } from "react-redux";
+
 export default function App() {
   return (
-    <View>
+    <Provider store={store}>
       <Routes />
-    </View>
+    </Provider>
   );
 }
