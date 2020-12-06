@@ -4,7 +4,8 @@
 
 ### Motivação
 
-Este projeto é um teste proposto pela [Compasso UOL](https://compassouol.com/), uma pokedex feita com a [PokeApi](https://pokeapi.co/), nela é possível ver os pokemons e seus detalhes, também é possível pesquisar o pokemon que você desejar.
+Este projeto é um teste proposto pela [Compasso UOL](https://compassouol.com/), uma Pokedex feita com a [PokeApi](https://pokeapi.co/).
+O aplicativo permite que o usuário veja os pokemons detalhadamente, tendo também a possíbilidade de pesquisar o pokemon que deseja.
 
 ### Configurando
 
