@@ -1,6 +1,6 @@
 # Pokedex
 
-`Oque é uma pokedex? Um lugar onde você pode ver todos os pokemons e pesquisar o seu favorito!`
+`O que é uma pokedex? Um app no qual você pode ver todos os pokemons e pesquisar o seu favorito!`
 
 ### Motivação
 
@@ -10,7 +10,7 @@ O aplicativo permite que o usuário veja os pokemons detalhadamente, tendo tamb�
 ### Configurando
 
 - use node 12+
-- instale as dependências do `yarn ou npm`
+- instale as dependências do `yarn ou npm install`
 
 ### Comandos
 
