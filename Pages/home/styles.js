@@ -8,10 +8,10 @@ export const Container = styled.View`
 
 export const TextInput = styled.TextInput`
   margin-top: 60px;
-  width: 60%;
+  width: 100%;
   padding: 10px;
-  border-radius: 6px;
-  border: 1px solid gray;
+  border-radius: 8px;
+  border: 2px solid gray;
 `;
 
 export const Image = styled.Image`

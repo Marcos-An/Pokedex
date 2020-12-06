@@ -33,6 +33,7 @@ function About() {
             <Value
               style={{
                 width: "30%",
+                fontSize: 12,
                 marginRight: 10,
                 marginTop: 20,
                 color: "white",

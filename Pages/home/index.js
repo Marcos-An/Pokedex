@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { StyleSheet, FlatList, SafeAreaView, Text } from "react-native";
+import { StyleSheet, FlatList, SafeAreaView, Text, View } from "react-native";
 import { Container, Image, TextInput } from "./styles";
 import Card from "../../Components/card";
+import Loading from "../../Components/loading";
 import Constants from "expo-constants";
 import { client } from "../../services/axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +14,7 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [pokemonSerched, setSerched] = useState([]);
   const [erro, setErro] = useState(false);
+  const [loading, setLoading] = useState(false);
   const pokemon = useSelector((state) => state.pokemon);
   const nextUrl = useSelector((state) => state.next);
 
@@ -41,16 +43,17 @@ const Home = () => {
   }, []);
 
   const makeSearch = () => {
-    console.log(search.toLowerCase());
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`)
       .then(({ data }) => {
         setSerched([data]);
         setErro(false);
+        setLoading(false);
       })
       .catch(() => {
         setSerched([]);
         setErro(true);
+        setLoading(false);
       });
   };
 
@@ -62,9 +65,11 @@ const Home = () => {
 
   useEffect(() => {
     if (search.length > 0) {
+      setLoading(true);
       delayedQuery();
       return delayedQuery.cancel;
     } else {
+      setLoading(false);
       setErro(false);
       setSerched([]);
     }
@@ -77,34 +82,47 @@ const Home = () => {
         onChangeText={onChange}
         placeholder="Search your favorite pokemon!"
       />
-      <SafeAreaView style={styles.pokemon}>
-        {erro && <Text>POKEMON NÃO ENCONTRADO</Text>}
-        {console.log(pokemonSerched)}
-        {pokemonSerched.length > 0 && (
-          <FlatList
-            data={pokemonSerched}
-            keyExtractor={(item) => console.log(item)}
-            numColumns={2}
-            onEndReached={getNext}
-            onEndReachedThreshold={0.5}
-            renderItem={({ item }) => {
-              return <Card pokemonName={item.name} />;
-            }}
-          />
-        )}
-        {!erro && pokemonSerched.length === 0 && (
-          <FlatList
-            data={pokemon}
-            keyExtractor={(item) => item.name}
-            numColumns={2}
-            onEndReached={getNext}
-            onEndReachedThreshold={0.5}
-            renderItem={({ item }) => {
-              return <Card pokemonName={item.name} />;
-            }}
-          />
-        )}
-      </SafeAreaView>
+      {!loading ? (
+        <SafeAreaView style={styles.pokemon}>
+          {erro && (
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text>I DONT FIND YOUR FAVORITE POKEMON!</Text>
+            </View>
+          )}
+          {pokemonSerched.length > 0 && (
+            <FlatList
+              data={pokemonSerched}
+              keyExtractor={(item) => item.id}
+              numColumns={2}
+              onEndReached={getNext}
+              onEndReachedThreshold={0.5}
+              renderItem={({ item }) => {
+                return <Card pokemonName={item.name} />;
+              }}
+            />
+          )}
+          {!erro && pokemonSerched.length === 0 && (
+            <FlatList
+              data={pokemon}
+              keyExtractor={(item) => item.name}
+              numColumns={2}
+              onEndReached={getNext}
+              onEndReachedThreshold={0.5}
+              renderItem={({ item }) => {
+                return <Card pokemonName={item.name} />;
+              }}
+            />
+          )}
+        </SafeAreaView>
+      ) : (
+        <Loading source={require("../../assets/pokeball-black.png")} />
+      )}
     </Container>
   );
 };
