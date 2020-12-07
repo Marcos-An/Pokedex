@@ -20,8 +20,8 @@ export const Images = styled.Image`
   transform: rotate(45deg);
   width: 230px;
   height: 230px;
-  bottom: -20;
-  right: -10;
+  bottom: -20px;
+  right: -10px;
   opacity: 0.2;
 `;
 
@@ -42,8 +42,8 @@ export const TypeContainer = styled.View`
   background-color: rgba(255, 255, 255, 0.2);
   padding: 6px;
   margin-right: 10px;
-  padding-left: 16;
-  padding-right: 16;
+  padding-left: 16px;
+  padding-right: 16px;
   border-radius: 10px;
 `;
 export const TypeName = styled.Text`

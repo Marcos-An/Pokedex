@@ -12,8 +12,10 @@ function About() {
     <Container>
       <ViewLabel>
         <Label>Types:</Label>
-        {pokemon.types.map(({ type }) => (
-          <Value style={{ marginRight: 10 }}>{type.name}</Value>
+        {pokemon.types.map(({ type }, index) => (
+          <Value key={index} style={{ marginRight: 10 }}>
+            {type.name}
+          </Value>
         ))}
       </ViewLabel>
       <ViewLabel>
@@ -29,8 +31,9 @@ function About() {
           Abilities:
         </Label>
         <View style={{ flexDirection: "row" }}>
-          {pokemon.abilities.map(({ ability }) => (
+          {pokemon.abilities.map(({ ability }, index) => (
             <Value
+              key={index}
               style={{
                 width: "30%",
                 fontSize: 12,
@@ -55,8 +58,8 @@ function SettingsScreen() {
   const pokemon = useSelector((state) => state.pokemonDetail);
   return (
     <Container>
-      {pokemon.stats.map((item) => (
-        <ViewLabel>
+      {pokemon.stats.map((item, index) => (
+        <ViewLabel key={index}>
           <Label>{item.stat.name}</Label>
           <Value style={{ marginRight: 10 }}>{item.base_stat}</Value>
           <Status width={item.base_stat} />

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const BackIcon = () => {
   const history = useHistory();
   return (
-    <TouchableWithoutFeedback onPress={() => history.push("/")}>
+    <TouchableWithoutFeedback onPress={() => history.goBack()}>
       <Icon name="md-arrow-round-back" size={30} color="#fff" />
     </TouchableWithoutFeedback>
   );
