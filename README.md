@@ -1,5 +1,11 @@
 # Pokedex
 
+<a href="" target="_blank">
+  <img src="assets/mockup.png" alt="Logo">
+</a> 
+<br> 
+<br> 
+
 `O que é uma pokedex? Um app no qual você pode ver todos os pokemons e pesquisar o seu favorito!`
 
 ### Motivação
