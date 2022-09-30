@@ -20,7 +20,7 @@ export const Images = styled.Image`
   transform: rotate(45deg);
   width: 230px;
   height: 230px;
-  bottom: -20px;
+  bottom: 50px;
   right: -10px;
   opacity: 0.2;
 `;

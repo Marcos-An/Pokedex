@@ -18,11 +18,12 @@ import Constants from "expo-constants";
 import BackButton from "./iconBack";
 import TabDetails from "../../Components/TabDetails";
 
-const pokemonDetail = () => {
+const PokemonDetail = () => {
   const pokemon = useSelector((state) => state.pokemonDetail);
+  const color = typeColors[pokemon.types[0].type.name];
 
   return (
-    <Container background={typeColors[pokemon.types[0].type.name]}>
+    <Container background={color}>
       <ContentTop style={styles.container}>
         <BackButton />
         <Images source={require("../../assets/pokeball.png")} />
@@ -45,13 +46,13 @@ const pokemonDetail = () => {
         />
       </ContentTop>
       <Content style={styles.content}>
-        <TabDetails />
+        <TabDetails color={color} />
       </Content>
     </Container>
   );
 };
 
-export default pokemonDetail;
+export default PokemonDetail;
 
 const styles = StyleSheet.create({
   container: {

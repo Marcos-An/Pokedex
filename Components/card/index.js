@@ -11,14 +11,14 @@ import {
 } from "./styles";
 import { typeColors } from "../../utils/colors";
 import { client } from "../../services/axios";
-import { AppLoading } from "expo";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Card = ({ pokemonName }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [pokemon, setPokemon] = useState(null);
+  const navigation = useNavigation();
 
   const getPokemonDetails = async () => {
     const { data } = await client.get(`/pokemon/${pokemonName}`);
@@ -27,7 +27,7 @@ const Card = ({ pokemonName }) => {
 
   const handlePokemonDeail = () => {
     dispatch({ type: "POKEMON_DETAIL", value: pokemon });
-    history.push(`/${pokemon.species.name}`);
+    navigation.navigate("details");
   };
 
   useEffect(() => {
@@ -35,8 +35,9 @@ const Card = ({ pokemonName }) => {
   }, []);
 
   if (!pokemon) {
-    return <AppLoading />;
+    return <Text>Loading...</Text>;
   }
+
   return (
     <Touchable onPress={() => handlePokemonDeail()}>
       <Container background={typeColors[pokemon.types[0].type.name]}>

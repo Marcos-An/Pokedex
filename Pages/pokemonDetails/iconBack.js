@@ -1,13 +1,14 @@
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import { useHistory } from "react-router-dom";
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const BackIcon = () => {
-  const history = useHistory();
+  const navigation = useNavigation();
+
   return (
-    <TouchableWithoutFeedback onPress={() => history.goBack()}>
-      <Icon name="md-arrow-round-back" size={30} color="#fff" />
+    <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+      <Entypo name="chevron-thin-left" color="#ffff" size={20} />
     </TouchableWithoutFeedback>
   );
 };

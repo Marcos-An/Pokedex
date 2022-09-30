@@ -1,10 +1,9 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import React, { useState } from "react";
+import { View, useWindowDimensions } from "react-native";
 import { Container, Label, Value, ViewLabel, Status } from "./styles";
 import { useSelector } from "react-redux";
 import { typeColors } from "../../utils/colors";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
 function About() {
   const pokemon = useSelector((state) => state.pokemonDetail);
@@ -54,7 +53,7 @@ function About() {
   );
 }
 
-function SettingsScreen() {
+function Settings() {
   const pokemon = useSelector((state) => state.pokemonDetail);
   return (
     <Container>
@@ -69,16 +68,40 @@ function SettingsScreen() {
   );
 }
 
-const Tab = createMaterialTopTabNavigator();
+const renderScene = SceneMap({
+  about: About,
+  abilities: Settings,
+});
 
-const TabDetails = () => {
+const TabDetails = ({ color }) => {
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = useState(0);
+
+  const [routes] = React.useState([
+    { key: "about", title: "About" },
+    { key: "abilities", title: "Abilities" },
+  ]);
+
+  const renderTabBar = (props) => (
+    <TabBar
+      {...props}
+      indicatorStyle={{ backgroundColor: color }}
+      activeColor={color}
+      pressColor={color}
+      labelStyle={{ color: "black" }}
+      style={{ backgroundColor: "white" }}
+    />
+  );
+
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="About" component={About} />
-        <Tab.Screen name="Base status" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <TabView
+      navigationState={{ index, routes }}
+      renderTabBar={renderTabBar}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+    />
   );
 };
 export default TabDetails;

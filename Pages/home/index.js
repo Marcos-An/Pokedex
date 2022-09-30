@@ -98,7 +98,7 @@ const Home = () => {
           {pokemonSerched.length > 0 && (
             <FlatList
               data={pokemonSerched}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item, index) => `${index}-${item}`}
               numColumns={2}
               onEndReached={getNext}
               onEndReachedThreshold={0.5}
@@ -110,7 +110,7 @@ const Home = () => {
           {!erro && pokemonSerched.length === 0 && (
             <FlatList
               data={pokemon}
-              keyExtractor={(item) => item.name}
+              keyExtractor={(item, index) => `${index}-${item}`}
               numColumns={2}
               onEndReached={getNext}
               onEndReachedThreshold={0.5}
