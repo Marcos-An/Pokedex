@@ -6,41 +6,34 @@
 <br> 
 <br> 
 
-`O que é uma pokedex? Um app no qual você pode ver todos os pokemons e pesquisar o seu favorito!`
+`What is a pokedex? An app where you can see all pokemons and search for your favorite!`
 
-### Motivação
+### Motivation
 
-Este projeto é um teste proposto pela [Compasso UOL](https://compassouol.com/), uma Pokedex feita com a [PokeApi](https://pokeapi.co/).
-O aplicativo permite que o usuário veja os pokemons detalhadamente, tendo também a possíbilidade de pesquisar o pokemon que deseja.
+This project is a test proposed by [Compass UOL](https://compassuol.com/), a Pokedex made with [PokeApi](https://pokeapi.co/).
+The application allows the user to see the pokemons in detail, also having the possibility to search for the pokemon they want.
 
-### Configurando
+### Config
 
-- use node 12+
-- instale as dependências do `yarn ou npm install`
-
-### Comandos
-
-- 'Rode' o projeto `yarn start ou npm start`
-
-### Estrutura/Pastas
+- use 12+
+- install all dependencies`yarn ou npm install`
+ 
+### EStructure
 
 ```
-|-- assets (imagens e fonts estão aqui)
-|-- components (componentes da aplicação)
-|-- node_modules (Tem muita coisa aqui)
-|-- pages (páginas)
-    |--  home(página inicial)
-    |--  pokemonDetails(página detalhes do pokemon)
-|-- routes (rotas)
-|-- services (configuações do axios)
-|-- store (store do react-redux)
-|-- utils (cores)
-
-|-- ... Arquivos de configuração
+|-- assets 
+|-- components   
+|-- pages 
+    |--  home 
+    |--  pokemonDetails 
+|-- routes 
+|-- services  
+|-- store  
+|-- utils   
 
 ```
 
-### Feito com
+### Build with
 
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.io/)
